@@ -36,7 +36,7 @@ public class EnderecoEntity implements Serializable {
 	@Column(name="ID")
 	private Long idEndereco;
 
-	@Column(name = "LOFRADOURO", length = 100, nullable = false)
+	@Column(name = "LOGRADOURO", length = 100, nullable = false)
 	private String logradouro;
 
 	@Column(name = "BAIRRO", length = 100, nullable = false)

@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import br.com.ars.springdatajpa.enumerated.TipoContatoEnum;
@@ -46,4 +47,7 @@ public class ContatoEntity implements Serializable {
 	@Column(name = "OBS", length = 100, nullable = false)
 	private String observacao;
 
+	@ManyToOne
+	private PessoaEntity pessoa;
+	
 }

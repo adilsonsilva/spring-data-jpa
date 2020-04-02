@@ -9,9 +9,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.ars</groupId>
-	<artifactId>springdatajpa</artifactId>
+	<artifactId>spring-data-jpa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>springdatajpa</name>
+	<name>spring-data-jpa</name>
 	<description>Spring Data JPA</description>
 
 	<properties>
@@ -44,6 +44,11 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 	</dependencies>
 
