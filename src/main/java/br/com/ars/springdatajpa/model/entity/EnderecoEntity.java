@@ -26,10 +26,11 @@ import lombok.ToString;
 @Table(name = "ENDERECO")
 public class EnderecoEntity implements Serializable {
 
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -1469487266587065981L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
