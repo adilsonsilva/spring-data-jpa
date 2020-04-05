@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,7 +39,7 @@ public class ContatoEntity implements Serializable {
 	private Long idContato;
 
 	@Column(name = "TIPO_CONTATO", length = 100, nullable = false)
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private TipoContatoEnum tipoContato;
 
 	@Column(name = "CONTATO", length = 100, nullable = false)
@@ -49,5 +50,5 @@ public class ContatoEntity implements Serializable {
 
 	@ManyToOne
 	private PessoaEntity pessoa;
-	
+
 }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -47,7 +48,7 @@ public class EnderecoEntity implements Serializable {
 	private String cidade;
 
 	@Column(name = "ESTADO", length = 2, nullable = false)
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private EstadosEnum estado;
 
 	@Column(name = "CEP", length = 7, nullable = false)
