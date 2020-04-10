@@ -17,63 +17,63 @@ import br.com.ars.springdatajpa.model.entity.PessoaEntity;
 @Repository
 public interface PessoaRepository extends JpaRepository<PessoaEntity, Long> {
 
-	Optional<PessoaEntity> findPessoaId(Long id);
+	PessoaEntity findPessoaById(Long id);
 
-	Optional<PessoaEntity> findPessoaName(String nome);
+	Optional<PessoaEntity> findPessoaByNome(String nome);
 
-	Set<PessoaEntity> findPessoaNameLike(String nome);
+	Set<PessoaEntity> findPessoaByNomeLike(String nome);
 
-	Set<PessoaEntity> findPessoaNameStartingWith(String nome);
+	Set<PessoaEntity> findPessoaByNomeStartingWith(String nome);
 
-	Set<PessoaEntity> findPessoaNameEndingWith(String nome);
+	Set<PessoaEntity> findPessoaByNomeEndingWith(String nome);
 
-	Set<PessoaEntity> findPessoaCpfNotNull();
+	Set<PessoaEntity> findPessoaByCpfNotNull();
 
-	Set<PessoaEntity> findPessoaCpfIsNull();
+	Set<PessoaEntity> findPessoaByCpfIsNull();
 
-	Set<PessoaEntity> findPessoaCpfNot(String cpf);
+	Set<PessoaEntity> findPessoaByCpfNot(String cpf);
 
-	Optional<PessoaEntity> findPessoaEmailIgnoreCaseAndAtivoTrue(String email);
+	Optional<PessoaEntity> findPessoaByEmailIgnoreCaseAndAtivoTrue(String email);
 
-	Set<PessoaEntity> findPessoaAtivoTrueOrderByName();
+	Set<PessoaEntity> findPessoaByAtivoTrueOrderByName();
 
-	Set<PessoaEntity> findPessoaAtivoEquals();
+	Set<PessoaEntity> findPessoaByAtivoEquals();
 
-	Set<PessoaEntity> findPessoaDateCadastroAfter(LocalDate data);
+	Set<PessoaEntity> findPessoaByDataCadastroAfter(LocalDate data);
 
-	Set<PessoaEntity> findPessoaDateNascimentoBetween(LocalDate inicio, LocalDate fim);
+	Set<PessoaEntity> findPessoaByDataNascimentoBetween(LocalDate inicio, LocalDate fim);
 
-	Set<PessoaEntity> findPessoaIdadeLessThan(int idade);
+	Set<PessoaEntity> findPessoaByIdadeLessThan(int idade);
 
-	Set<PessoaEntity> findPessoaIdadeLessThanEqual(int idade);
+	Set<PessoaEntity> findPessoaByIdadeLessThanEqual(int idade);
 
-	Set<PessoaEntity> findPessoaIdadeGreaterThan(int idade);
+	Set<PessoaEntity> findPessoaByIdadeGreaterThan(int idade);
 
-	Set<PessoaEntity> findPessoaIdadeGreaterThanEqual(int idade);
+	Set<PessoaEntity> findPessoaByIdadeGreaterThanEqual(int idade);
 
-	Set<PessoaEntity> findPessoaAtivaTrueEnderecoEstadoEquals(String estado);
+	Set<PessoaEntity> findPessoaByAtivoTrueAndEnderecoByEstadoEquals(String estado);
 
-	Set<PessoaEntity> findPessoaAtivaTrueAndNameContatoTipoContato(String nome, String tipo);
-
-	Set<PessoaEntity> findPessoaAtivaTrueEnderecoEstadoIn(String... estados);
+//	Set<PessoaEntity> findPessoaByAtivoTrueAndNomeContatoTipoContato(String nome, String tipo);
+//
+//	Set<PessoaEntity> findPessoaByAtivoTrueEnderecoEstadoIn(String... estados);
 
 	/** Usando @Query para consultas **/
 	@Query("SELECT p FROM PessoaEntity p WHERE p.cpf=:cpf")
 	Optional<PessoaEntity> buscarPessoaPorCpf(@Param("cpf") String cpf);
 
 	/** Usando @Query para consultas native query **/
-	@Query(name = "SELECT * FROM PESSOA WHERE ATIVO =:ativo ", nativeQuery = true)
-	Set<PessoaEntity> buscarPessoaPorNome(@Param("ativo") Boolean ativo);
+	@Query(value = "SELECT * FROM PESSOA p WHERE p.ATIVO =:ativo ", nativeQuery = true)
+	Set<Object> buscarPessoaPorNome(@Param("ativo") Boolean ativo);
 
 	/** Usando @Query update/delete **/
 	@Modifying
 	@Transactional
-	@Query(name = "UPDATE PessoaEntity SET ativo=:ativo WHERE id=:id")
+	@Query(value = "UPDATE PessoaEntity SET ativo=:ativo WHERE id=:id")
 	void desativarPessoa(@Param("ativo") Boolean status, @Param("id") Long id);
 
 	@Modifying
 	@Transactional
-	@Query(name = "DELETE FROM PessoaEntity WHERE id=:id")
+	@Query(value = "DELETE FROM PessoaEntity WHERE id=:id")
 	void excluirPessoa(@Param("id") Long id);
 
 }
